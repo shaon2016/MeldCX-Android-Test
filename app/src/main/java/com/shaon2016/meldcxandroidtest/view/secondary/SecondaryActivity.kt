@@ -5,7 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.activity.viewModels
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.shaon2016.meldcxandroidtest.R
 import com.shaon2016.meldcxandroidtest.base.BaseActivity
@@ -65,6 +68,61 @@ class SecondaryActivity : BaseActivity() {
             it?.let {
                 adapter.clear()
                 adapter.addData(it as ArrayList<History>)
+            }
+        }
+        doSearch()
+    }
+
+    private fun doSearch() {
+        binding.evSearch.addTextChangedListener {
+            it?.let {
+                adapter.filterable.filter.filter(it.toString())
+
+                if (it.toString().isEmpty()) {
+                    binding.ivClear.visibility = View.GONE
+                } else {
+                    binding.ivClear.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        binding.ivClear.setOnClickListener {
+            binding.evSearch.setText("")
+        }
+
+        adapter.filterable = Filterable {
+            object : Filter() {
+                override fun performFiltering(charSequence: CharSequence): FilterResults {
+                    val charString = charSequence.toString()
+                    if (charString.isEmpty()) {
+                        adapter.filterableItems = adapter.datas
+                    } else {
+                        val filteredList: ArrayList<History> = ArrayList()
+                        for (row in adapter.datas) {
+
+                            // name match condition. this might differ depending on your requirement
+                            // here we are looking for name or phone number match
+                            if (row.url.lowercase()
+                                    .contains(charString.lowercase())
+                            ) {
+                                filteredList.add(row)
+                            }
+                        }
+                        adapter.filterableItems = filteredList
+                    }
+                    val filterResults = FilterResults()
+                    filterResults.values = adapter.filterableItems
+                    return filterResults
+                }
+
+                override fun publishResults(
+                    charSequence: CharSequence,
+                    filterResults: FilterResults
+                ) {
+                    adapter.filterableItems =
+                        filterResults.values as ArrayList<History>
+                    adapter.notifyDataSetChanged()
+                }
             }
         }
     }
