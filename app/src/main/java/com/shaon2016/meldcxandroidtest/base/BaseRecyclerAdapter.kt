@@ -20,14 +20,7 @@ class BaseRecyclerAdapter<T>(
         return listener.getViewHolder(parent, viewType)
     }
 
-    override fun getItemCount(): Int {
-        val n = if (datas.size > 0) datas.size else 1
-        return if (datas.size > 0) datas.size else 1
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return if (datas.size > 0) position else -1
-    }
+    override fun getItemCount() = datas.size
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         if (datas.size > 0) {
