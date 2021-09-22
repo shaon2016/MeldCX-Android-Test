@@ -1,4 +1,4 @@
-package com.lastblade.androidarchitecturewithhilt.data.local.db
+package com.shaon2016.meldcxandroidtest.data.local.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

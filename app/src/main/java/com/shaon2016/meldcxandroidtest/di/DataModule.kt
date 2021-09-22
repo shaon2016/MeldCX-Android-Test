@@ -17,7 +17,4 @@ object DataModule {
     fun provideRoomHelper(@ApplicationContext context: Context): RoomHelper {
         return RoomHelper(context)
     }
-
-
-
 }

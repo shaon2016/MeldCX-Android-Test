@@ -9,6 +9,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 abstract class BaseActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var dataManager: DataManager
+
     override
     fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
