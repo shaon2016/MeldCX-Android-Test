@@ -1,4 +1,4 @@
-package com.shaon2016.meldcxandroidtest
+package com.shaon2016.meldcxandroidtest.view.main
 
 import android.graphics.Bitmap
 import androidx.lifecycle.viewModelScope
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainVM @Inject constructor(private val dataManager: DataManager) : BaseViewModel() {
+class MainVM @Inject constructor(dataManager: DataManager) : BaseViewModel() {
 
     private val historyDao = dataManager.roomHelper.getDatabase().historyDao()
 

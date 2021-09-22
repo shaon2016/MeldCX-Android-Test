@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeldCXAndroidTest">
         <activity
-            android:name=".view.SecondaryActivity"
+            android:name=".view.secondary.SecondaryActivity"
             android:exported="true" />
         <activity
             android:name=".view.main.MainActivity"

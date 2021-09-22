@@ -1,5 +1,6 @@
 package com.shaon2016.meldcxandroidtest.view.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.webkit.WebSettings
 import android.webkit.WebViewClient
@@ -9,8 +10,8 @@ import com.shaon2016.meldcxandroidtest.databinding.ActivityMainBinding
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import androidx.activity.viewModels
-import com.shaon2016.meldcxandroidtest.MainVM
 import com.shaon2016.meldcxandroidtest.util.U
+import com.shaon2016.meldcxandroidtest.view.secondary.SecondaryActivity
 
 
 class MainActivity : BaseActivity() {
@@ -26,6 +27,8 @@ class MainActivity : BaseActivity() {
 
 
     override fun viewRelatedTask() {
+        title = "Home"
+
         initWeb()
 
         binding.btnGo.setOnClickListener {
@@ -35,12 +38,16 @@ class MainActivity : BaseActivity() {
         binding.btnCapture.setOnClickListener {
             takeWebScreenshot()
         }
+
+        binding.btnHistory.setOnClickListener {
+            startActivity(Intent(this, SecondaryActivity::class.java))
+        }
     }
 
     private fun loadWeb() {
 
         if (checkUrl())
-            binding.web.loadUrl("https://www.google.com")
+            binding.web.loadUrl(binding.evUrl.text.toString())
 
 
         U.hideKeyboard(this)

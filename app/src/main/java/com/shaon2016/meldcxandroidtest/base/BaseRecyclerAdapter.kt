@@ -53,7 +53,7 @@ class BaseRecyclerAdapter<T>(
 
     fun removeData(position: Int) {
         this.datas.removeAt(position)
-        notifyDataSetChanged()
+        notifyItemRemoved(position)
     }
 
 
