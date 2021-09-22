@@ -63,6 +63,7 @@ class SecondaryActivity : BaseActivity() {
 
         vm.histories.observe(this) {
             it?.let {
+                adapter.clear()
                 adapter.addData(it as ArrayList<History>)
             }
         }

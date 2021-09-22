@@ -49,5 +49,10 @@ class BaseRecyclerAdapter<T>(
         notifyItemRemoved(position)
     }
 
+    fun clear() {
+        datas.clear()
+        notifyDataSetChanged()
+    }
+
 
 }
