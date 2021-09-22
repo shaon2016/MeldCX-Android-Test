@@ -1,8 +1,8 @@
 package com.shaon2016.meldcxandroidtest.view.main
 
 import android.graphics.Bitmap
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shaon2016.meldcxandroidtest.base.BaseViewModel
 import com.shaon2016.meldcxandroidtest.data.DataManager
 import com.shaon2016.meldcxandroidtest.data.local.db.entity.History
 import com.shaon2016.meldcxandroidtest.util.DateUtil
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainVM @Inject constructor(dataManager: DataManager) : BaseViewModel() {
+class MainVM @Inject constructor(dataManager: DataManager) : ViewModel() {
 
     private val historyDao = dataManager.roomHelper.getDatabase().historyDao()
 

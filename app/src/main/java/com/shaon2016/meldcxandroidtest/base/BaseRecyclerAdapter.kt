@@ -35,12 +35,18 @@ class BaseRecyclerAdapter<T>(
         }
     }
 
+    /**
+     * It will add data to the adapter item list
+     * */
     fun addData(datas: ArrayList<T>) {
         this.datas.addAll(datas)
         notifyDataSetChanged()
     }
-    fun addUniquely(newDatas: ArrayList<T>) {
 
+    /**
+    * It add data uniquely. No duplicate data
+    * */
+    fun addUniquely(newDatas: ArrayList<T>) {
         newDatas.forEach {nd->
             var found = false
             for (d in datas) {
@@ -55,26 +61,29 @@ class BaseRecyclerAdapter<T>(
         notifyDataSetChanged()
     }
 
+    /**
+     * Clear all the data from item list
+     * */
     fun clear() {
         datas.clear()
         filterableItems.clear()
         notifyDataSetChanged()
     }
 
-    fun removeData(datas: ArrayList<T>) {
-        this.datas.clear()
-        notifyDataSetChanged()
-    }
-
+    /**
+     * It adds a single data
+     * */
     fun addData(data: T) {
         this.datas.add(data)
         notifyDataSetChanged()
     }
 
+    /**
+     * It removes a data from its position
+     * */
     fun removeData(position: Int) {
         this.datas.removeAt(position)
         notifyDataSetChanged()
     }
-
 
 }

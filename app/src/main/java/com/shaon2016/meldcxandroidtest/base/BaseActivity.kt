@@ -9,23 +9,18 @@ import javax.inject.Inject
 @AndroidEntryPoint
 abstract class BaseActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var dataManager: DataManager
-
-    override
-    fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
+    /**
+     * Override it to viewRelatedTask() method to work with views
+     * */
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         viewRelatedTask()
     }
 
+    /**
+     * view initialize goes here.
+     * Every activity will override it
+     * */
     abstract fun viewRelatedTask()
-
-
-
 
 }
