@@ -1,4 +1,4 @@
-package com.shaon2016.meldcxandroidtest
+package com.shaon2016.meldcxandroidtest.view.main
 
 import android.os.Bundle
 import android.webkit.WebSettings
@@ -9,6 +9,7 @@ import com.shaon2016.meldcxandroidtest.databinding.ActivityMainBinding
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import androidx.activity.viewModels
+import com.shaon2016.meldcxandroidtest.MainVM
 import com.shaon2016.meldcxandroidtest.util.U
 
 
@@ -67,7 +68,7 @@ class MainActivity : BaseActivity() {
         val canvas = Canvas(b)
         binding.web.draw(canvas)
 
-        vm.saveToDb(b, binding.web.url)
+        vm.saveToDb(b, binding.web.url!!)
     }
 
 
