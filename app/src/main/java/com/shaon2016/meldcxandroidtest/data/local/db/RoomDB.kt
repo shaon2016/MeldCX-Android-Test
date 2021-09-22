@@ -2,12 +2,11 @@ package com.shaon2016.meldcxandroidtest.data.local.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.blackice.business.data.local_db.entity.Category
-import com.example.structure.data.local.dao.CategoryDao
+import com.shaon2016.meldcxandroidtest.data.local.db.dao.HistoryDao
+import com.shaon2016.meldcxandroidtest.data.local.db.entity.History
 
-
-@Database(entities = [Category::class], version = 1, exportSchema = false)
+@Database(entities = [History::class], version = 1, exportSchema = false)
 abstract class RoomDB : RoomDatabase() {
 
-    abstract fun categoryDao(): CategoryDao
+    abstract fun historyDao(): HistoryDao
 }
