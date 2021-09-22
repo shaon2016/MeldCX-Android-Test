@@ -23,7 +23,7 @@ object U {
 
     fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
         val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, stream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 60, stream)
         val byteArray = stream.toByteArray()
         bitmap.recycle()
 

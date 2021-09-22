@@ -20,5 +20,11 @@ class HistoryListRvVH(private val v: RvHistoryRowBinding) : BaseViewHolder(v.roo
         v.ivDelete.setOnClickListener {
             mCallback.clickListener(position, model, it)
         }
+        v.tvUrl.setOnClickListener {
+            mCallback.clickListener(position, model, it)
+        }
+        v.iv.setOnClickListener {
+            mCallback.clickListener(position, model, it)
+        }
     }
 }

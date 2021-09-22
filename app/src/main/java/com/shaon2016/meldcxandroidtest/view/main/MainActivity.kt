@@ -9,7 +9,9 @@ import com.shaon2016.meldcxandroidtest.base.BaseActivity
 import com.shaon2016.meldcxandroidtest.databinding.ActivityMainBinding
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.util.Base64
 import androidx.activity.viewModels
+import com.shaon2016.meldcxandroidtest.data.local.db.entity.History
 import com.shaon2016.meldcxandroidtest.util.U
 import com.shaon2016.meldcxandroidtest.view.secondary.SecondaryActivity
 
@@ -31,6 +33,16 @@ class MainActivity : BaseActivity() {
 
         initWeb()
 
+        val history = intent?.extras?.getSerializable("history") as History?
+
+        history?.let {
+            binding.evUrl.setText(it.url)
+
+            loadImageToWebView(it)
+
+            loadWeb()
+        }
+
         binding.btnGo.setOnClickListener {
             loadWeb()
         }
@@ -44,11 +56,20 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun loadImageToWebView(it: History) {
+        var html = "<html><body><img src='{IMAGE_PLACEHOLDER}' width=400 height=400/></body></html>"
+
+        val bitmapBase64 = Base64.encodeToString(it.imageByteArray, Base64.DEFAULT)
+        val image = "data:image/png;base64,$bitmapBase64"
+
+        html = html.replace("{IMAGE_PLACEHOLDER}", image);
+        binding.web.loadDataWithBaseURL("file:///android_asset/", html, "text/html", "utf-8", "");
+    }
+
     private fun loadWeb() {
 
         if (checkUrl())
             binding.web.loadUrl(binding.evUrl.text.toString())
-
 
         U.hideKeyboard(this)
     }

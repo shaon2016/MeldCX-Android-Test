@@ -3,6 +3,7 @@ package com.shaon2016.meldcxandroidtest.data.local.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity
 data class History(
@@ -11,4 +12,4 @@ data class History(
     var time: String = "",
     @ColumnInfo(name = "image_byte_array", typeAffinity = ColumnInfo.BLOB)
     var imageByteArray : ByteArray = byteArrayOf(),
-)
+) : Serializable

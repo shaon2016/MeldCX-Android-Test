@@ -1,5 +1,6 @@
 package com.shaon2016.meldcxandroidtest.view.secondary
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.shaon2016.meldcxandroidtest.base.IAdapterListener
 import com.shaon2016.meldcxandroidtest.data.local.db.entity.History
 import com.shaon2016.meldcxandroidtest.databinding.ActivitySecondaryBinding
 import com.shaon2016.meldcxandroidtest.databinding.RvHistoryRowBinding
+import com.shaon2016.meldcxandroidtest.view.main.MainActivity
 
 class SecondaryActivity : BaseActivity() {
     private lateinit var binding: ActivitySecondaryBinding
@@ -32,6 +34,9 @@ class SecondaryActivity : BaseActivity() {
                 when (view.id) {
                     R.id.ivDelete -> {
                         removeAItem(position)
+                    }
+                    else -> {
+                        goToMainActivityToLoadUrl(position)
                     }
                 }
             }
@@ -130,6 +135,14 @@ class SecondaryActivity : BaseActivity() {
     private fun removeAItem(position: Int) {
         vm.remove(adapter.datas[position])
         adapter.removeData(position)
+    }
+
+    private fun goToMainActivityToLoadUrl(position: Int) {
+        startActivity(Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            putExtra("history", adapter.datas[position])
+        })
     }
 
 }
