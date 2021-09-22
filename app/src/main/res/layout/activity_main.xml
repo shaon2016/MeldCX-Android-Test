@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <EditText
         android:id="@+id/evUrl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Input Url"
         android:padding="16dp"
+        android:text="https://www.google.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
