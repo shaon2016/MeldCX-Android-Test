@@ -17,11 +17,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <WebView
+        android:id="@+id/web"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btnCapture"
         app:layout_constraintTop_toBottomOf="@+id/evUrl" />
 
     <Button
@@ -46,7 +47,7 @@
 
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnCapture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
