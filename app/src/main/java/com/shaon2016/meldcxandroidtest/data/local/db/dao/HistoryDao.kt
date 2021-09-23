@@ -18,4 +18,8 @@ interface HistoryDao {
 
     @Delete
     fun delete(h: History): Int
+
+    @Query("SELECT * FROM History where url = :url")
+    fun findByUrl(url: String): History
+
 }
