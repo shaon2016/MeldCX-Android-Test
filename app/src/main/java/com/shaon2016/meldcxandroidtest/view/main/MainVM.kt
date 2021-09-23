@@ -23,7 +23,7 @@ class MainVM @Inject constructor(dataManager: DataManager) : ViewModel() {
             val h = History()
             h.url = url
             h.imageByteArray = U.bitmapToByteArray(bitmap)
-            h.time = DateUtil.todayDateForView
+            h.time = DateUtil.todayDateTimeForView
 
             historyDao.insert(h)
         }

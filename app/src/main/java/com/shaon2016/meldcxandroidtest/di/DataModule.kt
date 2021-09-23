@@ -12,6 +12,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
+
+    /**
+     * initializes the database
+     * */
     @Provides
     @Singleton
     fun provideRoomHelper(@ApplicationContext context: Context): RoomHelper {

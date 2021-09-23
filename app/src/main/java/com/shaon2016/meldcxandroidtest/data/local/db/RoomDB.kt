@@ -5,6 +5,10 @@ import androidx.room.RoomDatabase
 import com.shaon2016.meldcxandroidtest.data.local.db.dao.HistoryDao
 import com.shaon2016.meldcxandroidtest.data.local.db.entity.History
 
+/**
+ * Here we provide table,
+ * Define dao method for Database
+ * */
 @Database(entities = [History::class], version = 1, exportSchema = false)
 abstract class RoomDB : RoomDatabase() {
 

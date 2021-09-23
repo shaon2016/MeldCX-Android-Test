@@ -7,6 +7,9 @@ import android.view.inputmethod.InputMethodManager
 import java.io.ByteArrayOutputStream
 
 object U {
+    /**
+     * Hide keyboard pop up
+     * */
     fun hideKeyboard(context: Context) {
         val inputManager = context.getSystemService(
             Context.INPUT_METHOD_SERVICE
@@ -21,6 +24,9 @@ object U {
         }
     }
 
+    /**
+     * Converts a bitmap to byte array
+     * */
     fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
         val stream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 60, stream)

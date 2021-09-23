@@ -10,6 +10,7 @@ import com.shaon2016.meldcxandroidtest.databinding.ActivityMainBinding
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.util.Base64
+import android.webkit.URLUtil
 import androidx.activity.viewModels
 import com.shaon2016.meldcxandroidtest.data.local.db.entity.History
 import com.shaon2016.meldcxandroidtest.util.U
@@ -43,6 +44,10 @@ class MainActivity : BaseActivity() {
             loadWeb()
         }
 
+       handleBtn()
+    }
+
+    private fun handleBtn() {
         binding.btnGo.setOnClickListener {
             loadWeb()
         }
@@ -56,6 +61,20 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Load web page to web page after clicking the go button
+     * */
+    private fun loadWeb() {
+
+        if (checkUrl())
+            binding.web.loadUrl(binding.evUrl.text.toString())
+
+        U.hideKeyboard(this)
+    }
+
+    /**
+     * Load preview from history page that we click to see
+     * */
     private fun loadImageToWebView(it: History) {
         var html = "<html><body><img src='{IMAGE_PLACEHOLDER}' width=400 height=400/></body></html>"
 
@@ -66,20 +85,15 @@ class MainActivity : BaseActivity() {
         binding.web.loadDataWithBaseURL("file:///android_asset/", html, "text/html", "utf-8", "");
     }
 
-    private fun loadWeb() {
-
-        if (checkUrl())
-            binding.web.loadUrl(binding.evUrl.text.toString())
-
-        U.hideKeyboard(this)
-    }
-
+    /**
+     * Checking user inserted a url or not
+     * */
     private fun checkUrl(): Boolean {
-        val url = binding.evUrl.text.toString()
+        val url = binding.evUrl.text.toString().trim()
 
-        if (url.isNotEmpty()) return true
+        if (url.isNotEmpty() && url.startsWith("http") && URLUtil.isValidUrl(url)) return true
 
-        Toast.makeText(this, "Please insert a url", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Please insert a valid url with http or https", Toast.LENGTH_SHORT).show()
         return false
     }
 
