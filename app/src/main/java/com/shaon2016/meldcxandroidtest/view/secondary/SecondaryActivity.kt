@@ -78,6 +78,10 @@ class SecondaryActivity : BaseActivity() {
         doSearch()
     }
 
+    /**
+     * Searching through the adapter items
+     * implemented using filterable
+     * */
     private fun doSearch() {
         binding.evSearch.addTextChangedListener {
             it?.let {

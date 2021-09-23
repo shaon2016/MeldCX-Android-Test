@@ -17,6 +17,9 @@ class MainVM @Inject constructor(dataManager: DataManager) : ViewModel() {
 
     private val historyDao = dataManager.roomHelper.getDatabase().historyDao()
 
+    /**
+     * Save content to database
+     * */
     fun saveToDb(bitmap: Bitmap, url: String) {
         viewModelScope.launch(Dispatchers.IO) {
 

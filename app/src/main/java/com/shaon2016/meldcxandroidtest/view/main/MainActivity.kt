@@ -97,12 +97,18 @@ class MainActivity : BaseActivity() {
         return false
     }
 
+    /**
+     * Initializing web to load
+     * */
     private fun initWeb() {
         binding.web.webViewClient = WebViewClient()
         val webSettings: WebSettings = binding.web.settings
         webSettings.javaScriptEnabled = true
     }
 
+    /**
+     * Taking web content screenshot and saving it to db
+     * */
     private fun takeWebScreenshot() {
         if (!checkUrl()) return
 
